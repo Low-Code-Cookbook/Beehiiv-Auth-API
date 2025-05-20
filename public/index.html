@@ -3,7 +3,8 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Beehiiv App Authentication</title>
+  <title>Low Code CTO - Beehiiv Identity Provider</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
   <style>
     html, body {
       height: 100%;
@@ -15,33 +16,257 @@
     }
     
     .container {
-      height: 100%;
+      min-height: 100%;
       display: flex;
       flex-direction: column;
-      justify-content: center;
+      justify-content: flex-start;
       align-items: center;
       text-align: center;
-      padding: 0 20px;
+      padding: 2rem 20px;
+      max-width: 1200px;
+      margin: 0 auto;
+      margin-bottom: 3rem;
     }
     
     h1 {
-      color: #4f46e5;
+      color: #000000;
       font-size: 2.5rem;
-      margin-bottom: 1rem;
+      margin-bottom: 2rem;
     }
     
     p {
       color: #4b5563;
       font-size: 1.25rem;
       max-width: 600px;
+      line-height: 1.8;
+      margin-bottom: 1.5rem;
+    }
+
+    .logo {
+      width: 200px;
+      height: auto;
+      margin: 2rem 0;
+      display: block;
+    }
+
+    .content-section {
+      background-color: #ffffff;
+      padding: 2rem;
+      border-radius: 8px;
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+      margin-bottom: 2rem;
+      width: 100%;
+      max-width: 800px;
+      text-align: left;
+    }
+
+    .content-section p {
+      max-width: 100%;
+      text-align: left;
+    }
+
+    .links {
+      margin-top: 2rem;
+      display: flex;
+      flex-direction: row;
+      gap: 2rem;
+      justify-content: space-between;
+      width: 100%;
+      max-width: 800px;
+      align-items: stretch;
+    }
+
+    .link-card {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+      padding: 2rem;
+      border-radius: 8px;
+      background-color: #ffffff;
+      flex: 1 1 0;
+      min-width: 0;
+      transition: transform 0.2s ease;
+      height: 100%;
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+    }
+
+    .link-card:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    }
+
+    .link-card i {
+      font-size: 2.5rem;
+      margin-bottom: 1rem;
+      color: #000000;
+    }
+
+    .link-card i.fa-beehiiv {
+      color: #FF5A5F;
+    }
+
+    .link-card i.fa-github {
+      color: #333333;
+    }
+
+    .link-card a {
+      color: #000000;
+      text-decoration: none;
+      font-size: 1.1rem;
+      transition: color 0.2s ease;
+      padding: 0.5rem;
+      border-radius: 4px;
+    }
+
+    .link-card a:hover {
+      color: #333333;
+      text-decoration: underline;
+    }
+
+    .link-card p {
+      color: #4b5563;
+      font-size: 1rem;
       line-height: 1.6;
+      margin: 1rem 0;
+      flex: 1;
+    }
+
+    .link-card .button {
+      display: inline-block;
+      padding: 0.75rem 1.5rem;
+      background-color: #000000;
+      color: #ffffff;
+      text-decoration: none;
+      border-radius: 4px;
+      font-weight: 500;
+      transition: background-color 0.2s ease;
+      margin-top: auto;
+    }
+
+    .link-card .button:hover {
+      background-color: #333333;
+      text-decoration: none;
+    }
+
+    @media (max-width: 900px) {
+      .container {
+        padding: 2rem 20px;
+      }
+
+      .content-section, .links {
+        max-width: 100%;
+        padding: 1.5rem;
+        box-shadow: none;
+      }
+
+      .links {
+        flex-direction: column;
+        gap: 1.5rem;
+        align-items: center;
+      }
+
+      .link-card {
+        width: 100%;
+        min-width: unset;
+        padding: 1.5rem;
+        box-shadow: none;
+      }
+
+      .link-card:hover {
+        transform: none;
+        box-shadow: none;
+      }
+
+      h1 {
+        font-size: 2rem;
+      }
+
+      p {
+        font-size: 1.1rem;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .container {
+        padding: 1rem;
+      }
+
+      .content-section, .links {
+        padding: 1rem;
+      }
+
+      h1 {
+        font-size: 1.75rem;
+      }
+
+      p {
+        font-size: 1rem;
+      }
+
+      .link-card {
+        padding: 1rem;
+      }
+    }
+
+    .copyright {
+      margin-top: 5rem;
+      margin-bottom: 3rem;
+      color: #666666;
+      font-size: 0.9rem;
     }
   </style>
 </head>
 <body>
   <div class="container">
-    <h1>Beehiiv App Authentication</h1>
-    <p>Welcome to the Beehiiv authentication system. This service provides secure magic link authentication for your application.</p>
+    <img src="https://cdn.lowcodeCTO.com/logos/low-code-cto.png" alt="Low Code CTO Logo" class="logo" onerror="this.style.display='none'">
+    <h1>Beehiiv Authentication API</h1>
+    <div class="content-section">
+      <p>
+        Welcome to the Beehiiv authentication system. Currently,
+        Beehiiv.com does not support OAuth or SAML. So, I built this
+        solution so I can use their service as my identity provider.
+      </p>
+      <p>
+        This was <b>100% vibe coded</b> in a single day using Warp.dev CLI 
+        AI tools. I have wanted a way to give only subscribes 
+        access to apps I write about. So this was the solution.
+      </p>
+      <p>
+        Why not use Auth0 or some other service? I try to 
+        use the smallest amount of code and services to keep
+        any codebase as simple as possible. Simple is cheaper.
+        Simple is easier to maintain. Simple is more secure.
+      </p>
+      <p>
+        Feel free to clone and use. There is an example .env file.
+        It also contains a UI tools to allow for testing the 
+        authentication workflow <a href="debug.html" target="_blank">in-situ</a>.
+        Hint, there is a setting the .env to enable full (unsafe)
+        debug mode.
+      </p>
+      <p>
+        In a nut shell, this solution is designed to 
+        let me "vibe" code some apps, but require a user 
+        to be subscribed to my newsletter to access.
+        Fair?
+      </p>
+    </div>
+    <div class="links">
+      <div class="link-card">
+        <i class="fa-solid fa-envelope-open-text fa-beehiiv"></i>
+        <p>Learn how I built this solution and why I chose to use Beehiiv as my identity provider. The post includes implementation details and use cases.</p>
+        <a href="https://lowcodecto.com/p/beehiiv-as-my-login" target="_blank" class="button">Read the Post</a>
+      </div>
+      <div class="link-card">
+        <i class="fab fa-github fa-github"></i>
+        <p>Free to clone and use. The repository includes all the code, documentation, and environment settings needed to run your own instance.</p>
+        <a href="https://github.com/Low-Code-Cookbook/Beehiiv-Auth-API" target="_blank" class="button">View on GitHub</a>
+      </div>
+    </div>
+    <div class="copyright">
+      &copy; <script>document.write(new Date().getFullYear())</script> Low Code CTO. All rights reserved.
+    </div>
   </div>
 </body>
 </html> 
